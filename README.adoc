@@ -24,7 +24,7 @@
 :page-essential-order: 1
 :page-permalink: /guides/collection-eclipse-mp-appsody/
 :imagesdir: /resources
-=  Using the Eclipse MicroProfile Collection with the Appsody CLI
+=  Developing cloud native microservices with the Eclipse MicroProfile Collection and Appsody CLI
 
 [.hidden]
 NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://kabanero.io/guides/{projectid}.html[website].
