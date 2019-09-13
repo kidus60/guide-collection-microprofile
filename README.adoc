@@ -39,7 +39,7 @@ Explore how to use the Eclipse MicroProfile Kabanero Collection and Appsody CLI 
 
 You will learn how to create and run a simple cloud native microservice. Then, you'll update the microservice that you created and deploy it to Kubernetes or Knative. This will all be done by using the Eclipse MicroProfile Kabanero Collection with the link:https://appsody.dev/docs/using-appsody/cli-commands[Appsody CLI].
 
-Kabanero's Eclipse MicroProfile Collection provides a stack that enables the development and optimization of microservices. Applications are written based on the Eclipse MicroProfile API specifications, and built and run with the link:https://openliberty.io/[Open Liberty] runtime. [INSERT SENTENCE ABOUT TEKTON PIPELINES.]
+Kabanero's Eclipse MicroProfile Collection provides a stack that enables the development and optimization of microservices. Applications are written based on the Eclipse MicroProfile API specifications, and built and run with the link:https://openliberty.io/[Open Liberty] runtime.
 
 // =================================================================================================
 // Prerequisites
@@ -57,10 +57,6 @@ Kabanero's Eclipse MicroProfile Collection provides a stack that enables the dev
 // =================================================================================================
 
 == Getting started
-
-=== Understanding the project layout
-
-It contains a `StarterApplication.java` JAX-RS Application class, a `server.xml` Liberty server configuration, an `index.html` static HTML file, and a `pom.xml` project build file.
 
 === Adding your index
 
@@ -93,7 +89,7 @@ kabanero    https://github.com/kabanero-io/collections/releases/download/v0.1.2/
 
 Run the following command to set the Kabanero index to the default:
 ----
-appsody appsody repo set-default kabanero
+appsody repo set-default kabanero
 ----
 
 Check the existing repositories to see that it was updated:
@@ -119,7 +115,27 @@ Run the following command to initialize the project with the Appsody CLI:
 appsody init java-microprofile
 ----
 
-The output from the command varies depending on whether you have an installation of Java and Maven on your system. The following example output is from a system with neither installed:
+The output from the command varies depending on whether you have an installation of Java and Maven on your system. If Java and Maven are installed on your system, you see an output similar to the following example:
+----
+[InitScript] [INFO] -------------------< dev.appsody:java-microprofile >--------------------
+[InitScript] [INFO] Building java-microprofile 0.2.11
+[InitScript] [INFO] --------------------------------[ pom ]---------------------------------
+[InitScript] [INFO]
+[InitScript] [INFO] --- maven-enforcer-plugin:3.0.0-M2:enforce (enforce-versions) @ java-microprofile ---
+[InitScript] [INFO] Skipping Rule Enforcement.
+[InitScript] [INFO]
+[InitScript] [INFO] --- maven-install-plugin:2.4:install (default-install) @ java-microprofile ---
+[InitScript] [INFO] Installing /Users/myuser/projects/simple-microprofile/.appsody_init/pom.xml to /Users/myuser/.m2/repository/dev/appsody/java-microprofile/0.2.11/java-microprofile-0.2.11.pom
+[InitScript] [INFO] ------------------------------------------------------------------------
+[InitScript] [INFO] BUILD SUCCESS
+[InitScript] [INFO] ------------------------------------------------------------------------
+[InitScript] [INFO] Total time:  0.648 s
+[InitScript] [INFO] Finished at: 2019-09-13T10:17:55+01:00
+[InitScript] [INFO] ------------------------------------------------------------------------
+Successfully initialized Appsody project
+----
+
+If Java and Maven are not installed on your system, you see an output similar to the following example:
 ----
 [InitScript] Unable to find any JVMs matching version "(null)".
 [InitScript] No Java runtime present, try --request to install.
@@ -131,6 +147,12 @@ The output from the command varies depending on whether you have an installation
 ----
 
 Your project is now initialized.
+
+=== Understanding the project layout
+
+
+
+It contains a `StarterApplication.java` JAX-RS Application class, a `server.xml` Liberty server configuration, an `index.html` static HTML file, and a `pom.xml` project build file.
 
 // =================================================================================================
 // Running the Appsody development environment
@@ -148,7 +170,7 @@ The Appsody CLI launches a local docker image that contains an Open Liberty serv
 [Container] [INFO] [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 20.235 seconds.
 ----
 
-This message indicates that the server is started and you are ready to begin development.
+This message indicates that the server is started and you are ready to begin developing your application.
 
 // =================================================================================================
 // Creating and updating the application
@@ -156,7 +178,7 @@ This message indicates that the server is started and you are ready to begin dev
 
 == Creating and updating the application
 
-Navigate to the JAX-RS application endpoint to confirm that there are no JAX-RS resources available. Point your browser to the http://localhost:9080/starter URL. You see the following `HTTP 500` error that states that there are no provider or resource classes that are associated with the application:
+Navigate to the JAX-RS application endpoint to confirm that there are no JAX-RS resources available. Go to the http://localhost:9080/starter URL. You see the following `HTTP 500` error that states that there are no provider or resource classes that are associated with the application:
 ----
 Error 500: javax.servlet.ServletException: At least one provider or resource class should be specified for application class "dev.appsody.starter.StarterApplication
 ----
@@ -183,7 +205,7 @@ After you save, the source compiles and the application updates. You see message
 [Container] [INFO] [AUDIT   ] CWWKZ0003I: The application starter-app updated in 0.988 seconds.
 ----
 
-Now if you browse to the http://localhost:9080/starter URL you no longer see the `HTTP 500` error. The resource that you just added is available in the `src/main/java/dev/appsody/starter` directory. Point your browser to the http://localhost:9080/starter/resource URL to see the following resource response:
+Now if you browse to the http://localhost:9080/starter URL, you no longer see the `HTTP 500` error. The resource that you just added is available at the `starter/resource` URL path. Go to the http://localhost:9080/starter/resource URL to see the following resource response:
 ----
 StarterResource response
 ----
@@ -215,7 +237,19 @@ Run the following command to check the status of the application pods:
 kubectl get pods
 ----
 
-After the `simple-microprofile` pod starts, go to the URL that was returned in the previous step, and you see the Appsody microservice splash screen. Go to http://localhost:30262/starter/resource and you see your deployed application response.
+You see an output similar to the following example:
+----
+NAME                                  READY    STATUS   RESTARTS   AGE
+appsody-operator-859b97bb98-htpgw      1/1     Running   0         3m2s
+simple-microprofile-77d6868765-xkcpk   1/1     Running   0         31s
+----
+
+The pod that is related to your deployed application is similar to the following pod:
+----
+simple-microprofile-77d6868765-xkcpk   1/1     Running   0         31s
+----
+
+After the `simple-microprofile` pod starts, go to the URL that was returned after you ran the `appsody deploy` command, and you see the Appsody microservice splash screen. Go to the `starter/resource` path of that URL to see the response from your application. For example, the http://localhost:30262 URL was returned in the previous example. Go to the http://localhost:30262/starter/resource URL to see the deployed application response.
 
 Use the following command to stop the deployed application:
 ----
@@ -258,14 +292,14 @@ After the application deploys, you see a message similar to the following exampl
 Deployed project running at "http://simple-microprofile.knative-serving.192.168.1.10.nip.io"
 ----
 
-To see the response from your application, point your browser to the http://simple-microprofile.knative-serving.192.168.1.10.nip.io/starter/resource URL.
+To see the response from your application, go to the `starter/resource` path of the URL that was returned after you ran the `appsody deploy` command. For example, the http://simple-microprofile.knative-serving.192.168.1.10.nip.io URL was returned in the previous example. Go to the http://simple-microprofile.knative-serving.192.168.1.10.nip.io/starter/resource URL to see the deployed application response.
 
 // =================================================================================================
-// Delivering to enterprise pipelines
+// Delivering to pipelines
 // =================================================================================================
 
-== Delivering to enterprise pipelines
+== Delivering to pipelines
 
-After you develop and test your application, it's time to deliver it to your enterprise Kabanero pipelines. To deliver it to the pipelines, push the project to a pre-configured Git repository. This repository can be public or enterprise. Your operations team configures the webhooks on the repository that trigger the pipelines. For more information about configuring webhooks for Tekton, see link:www...[David's topic].
+After you develop and test your application, it's time to deliver it to your enterprise's Kabanero pipeline. Operations teams can configure the webhook on the Git repository that triggers the pipeline. To deliver it to the pipeline, push the project to the pre-configured Git repository. The pipeline then builds and deploys the application.
 
 == Nice work!
