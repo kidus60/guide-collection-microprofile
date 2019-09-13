@@ -63,6 +63,7 @@ Kabanero's Eclipse MicroProfile Collection provides a stack that enables the dev
 Add your Kabanero index to the Appsody CLI. The following example uses the public index for Kabanero Version 0.1.2.
 
 First, run the following command to check the existing repositories:
+[role="command"]
 ----
 appsody repo list
 ----
@@ -75,6 +76,7 @@ NAME        URL
 ----
 
 Next, run the following command to add the Kabanero index:
+[role="command"]
 ----
 appsody repo add kabanero https://github.com/kabanero-io/collections/releases/download/v0.1.2/kabanero-index.yaml
 ----
@@ -88,6 +90,7 @@ kabanero    https://github.com/kabanero-io/collections/releases/download/v0.1.2/
 ----
 
 Run the following command to set the Kabanero index to the default:
+[role="command"]
 ----
 appsody repo set-default kabanero
 ----
@@ -105,12 +108,14 @@ Your Appsody CLI is now configured to use the Kabanero Collections. Next, you ne
 === Initializing your project
 
 First, create a directory that will contain the project:
+[role="command"]
 ----
 mkdir -p ~/projects/simple-microprofile
 cd ~/projects/simple-microprofile
 ----
 
 Run the following command to initialize the project with the Appsody CLI:
+[role="command"]
 ----
 appsody init java-microprofile
 ----
@@ -150,7 +155,9 @@ Your project is now initialized.
 
 === Understanding the project layout
 
+For context, the following image displays the structure of the project that you're working on:
 
+image::/docs/assets/microprofile-project-layout.png[]
 
 It contains a `StarterApplication.java` JAX-RS Application class, a `server.xml` Liberty server configuration, an `index.html` static HTML file, and a `pom.xml` project build file.
 
@@ -161,6 +168,7 @@ It contains a `StarterApplication.java` JAX-RS Application class, a `server.xml`
 == Running the Appsody development environment
 
 Run the following command to start the Appsody development environment:
+[role="command"]
 ----
 appsody run
 ----
@@ -223,6 +231,7 @@ Try changing the message in the `StarterResource.java` file, saving, and refresh
 == Deploying to Kubernetes
 
 After you finish writing your application code, the Appsody CLI makes it easy to deploy to a Kubernetes cluster for further testing. Ensure that your `kubectl` command is configured with cluster details, and run the following command to deploy your application:
+[role="command"]
 ----
 appsody deploy
 ----
@@ -233,6 +242,7 @@ Deployed project running at http://localhost:30262
 ----
 
 Run the following command to check the status of the application pods:
+[role="command"]
 ----
 kubectl get pods
 ----
@@ -252,6 +262,7 @@ simple-microprofile-77d6868765-xkcpk   1/1     Running   0         31s
 After the `simple-microprofile` pod starts, go to the URL that was returned after you ran the `appsody deploy` command, and you see the Appsody microservice splash screen. Go to the `starter/resource` path of that URL to see the response from your application. For example, the http://localhost:30262 URL was returned in the previous example. Go to the http://localhost:30262/starter/resource URL to see the deployed application response.
 
 Use the following command to stop the deployed application:
+[role="command"]
 ----
 appsody deploy delete
 ----
@@ -278,11 +289,13 @@ createKnativeService: true
 ----
 
 Run the following command to deploy the application from your local image registry:
+[role="command"]
 ----
 appsody deploy --tag dev.local/simple-microprofile --namespace <namespace>
 ----
 
 Alternatively, run the following command to deploy the application from Docker Hub:
+[role="command"]
 ----
 appsody deploy --push -—tag <my-account>/simple-microprofile --namespace <namespace>
 ----
@@ -303,3 +316,5 @@ To see the response from your application, go to the `starter/resource` path of 
 After you develop and test your application, it's time to deliver it to your enterprise's Kabanero pipeline. Operations teams can configure the webhook on the Git repository that triggers the pipeline. To deliver it to the pipeline, push the project to the pre-configured Git repository. The pipeline then builds and deploys the application.
 
 == Nice work!
+
+You learned the basics of how to use the Eclipse MicroProfile Kabanero Collection with the Appsody CLI to create, develop, and deploy a simple cloud native microservice.
