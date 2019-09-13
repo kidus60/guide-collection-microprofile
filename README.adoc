@@ -69,6 +69,7 @@ appsody repo list
 ----
 
 You see an output similar to the following example:
+[source, role='no_copy']
 ----
 appsody repo list
 NAME        URL
@@ -82,6 +83,7 @@ appsody repo add kabanero https://github.com/kabanero-io/collections/releases/do
 ----
 
 Check the existing repositories to see that it was added:
+[source, role='no_copy']
 ----
 appsody repo list
 NAME        URL
@@ -96,6 +98,7 @@ appsody repo set-default kabanero
 ----
 
 Check the existing repositories to see that it was updated:
+[source, role='no_copy']
 ----
 appsody repo list
 NAME        URL
@@ -121,6 +124,7 @@ appsody init java-microprofile
 ----
 
 The output from the command varies depending on whether you have an installation of Java and Maven on your system. If Java and Maven are installed on your system, you see an output similar to the following example:
+[source, role='no_copy']
 ----
 [InitScript] [INFO] -------------------< dev.appsody:java-microprofile >--------------------
 [InitScript] [INFO] Building java-microprofile 0.2.11
@@ -141,6 +145,7 @@ Successfully initialized Appsody project
 ----
 
 If Java and Maven are not installed on your system, you see an output similar to the following example:
+[source, role='no_copy']
 ----
 [InitScript] Unable to find any JVMs matching version "(null)".
 [InitScript] No Java runtime present, try --request to install.
@@ -157,10 +162,15 @@ Your project is now initialized.
 
 For context, the following image displays the structure of the project that you're working on:
 
-image::/docs/assets/microprofile-project-layout.png[]
+image::/guide-collection-microprofile/assets/microprofile-project-layout.png[]
 {empty} +
 
-It contains a `StarterApplication.java` JAX-RS Application class, a `server.xml` Liberty server configuration, an `index.html` static HTML file, and a `pom.xml` project build file.
+It contains the following artifacts:
+
+* `StarterApplication.java`, a JAX-RS Application class
+* `server.xml`, a Liberty server configuration file
+* `index.html`, a static HTML file
+* `pom.xml`, a project build file
 
 // =================================================================================================
 // Running the Appsody development environment
@@ -175,6 +185,7 @@ appsody run
 ----
 
 The Appsody CLI launches a local docker image that contains an Open Liberty server that hosts the microservice. After some time, you see a message similar to the following example:
+[source, role='no_copy']
 ----
 [Container] [INFO] [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 20.235 seconds.
 ----
@@ -188,11 +199,13 @@ This message indicates that the server is started and you are ready to begin dev
 == Creating and updating the application
 
 Navigate to the JAX-RS application endpoint to confirm that there are no JAX-RS resources available. Go to the http://localhost:9080/starter URL. You see the following `HTTP 500` error that states that there are no provider or resource classes that are associated with the application:
+[source, role='no_copy']
 ----
 Error 500: javax.servlet.ServletException: At least one provider or resource class should be specified for application class "dev.appsody.starter.StarterApplication
 ----
 
 In a new command-line window, go to the `src/main/java/dev/appsody/starter` directory that's within your project folder. Create a file named `StarterResource.java`. Open the file, populate it with the following code, and save it:
+[source,java]
 ----
 package dev.appsody.starter;
 import javax.ws.rs.GET;
@@ -207,6 +220,7 @@ public class StarterResource {
 ----
 
 After you save, the source compiles and the application updates. You see messages similar to the following example:
+[source, role='no_copy']
 ----
 [Container] [INFO] [AUDIT   ] CWWKT0017I: Web application removed (default_host): http://85862d8696be:9080/
 [Container] [INFO] [AUDIT   ] CWWKZ0009I: The application starter-app has stopped successfully.
@@ -215,6 +229,7 @@ After you save, the source compiles and the application updates. You see message
 ----
 
 Now if you browse to the http://localhost:9080/starter URL, you no longer see the `HTTP 500` error. The resource that you just added is available at the `starter/resource` URL path. Go to the http://localhost:9080/starter/resource URL to see the following resource response:
+[source, role='no_copy']
 ----
 StarterResource response
 ----
@@ -238,6 +253,7 @@ appsody deploy
 ----
 
 This command builds a new Docker image that is optimized for production deployment and deploys the image to your Kubernetes cluster. After some time you see a message similar to the following example:
+[source, role='no_copy']
 ----
 Deployed project running at http://localhost:30262
 ----
@@ -249,6 +265,7 @@ kubectl get pods
 ----
 
 You see an output similar to the following example:
+[source, role='no_copy']
 ----
 NAME                                  READY    STATUS   RESTARTS   AGE
 appsody-operator-859b97bb98-htpgw      1/1     Running   0         3m2s
@@ -256,6 +273,7 @@ simple-microprofile-77d6868765-xkcpk   1/1     Running   0         31s
 ----
 
 The pod that is related to your deployed application is similar to the following pod:
+[source, role='no_copy']
 ----
 simple-microprofile-77d6868765-xkcpk   1/1     Running   0         31s
 ----
@@ -269,6 +287,7 @@ appsody deploy delete
 ----
 
 After you run this command, and the deployment is deleted, you see the following message:
+[source, role='no_copy']
 ----
 Deployment deleted
 ----
@@ -280,11 +299,13 @@ Deployment deleted
 == Deploying to Knative
 
 You can also choose to deploy the application with Knative Serving. To deploy the application with Knative Serving, you must first install Knative in your Kubernetes cluster. For information about installing Knative, see the link:https://knative.dev/docs/install/[Knative documentation]. When Knative is installed, run the following command to generate an `app-deploy.yaml` file:
+[role="command"]
 ----
 appsody deploy —generate-only
 ----
 
 Open the `app-deploy.yaml` file that you generated and add the following information to the spec definition:
+[source, role='no_copy']
 ----
 createKnativeService: true
 ----
@@ -302,6 +323,7 @@ appsody deploy --push -—tag <my-account>/simple-microprofile --namespace <name
 ----
 
 After the application deploys, you see a message similar to the following example that details the serving URL:
+[source, role='no_copy']
 ----
 Deployed project running at "http://simple-microprofile.knative-serving.192.168.1.10.nip.io"
 ----
@@ -316,6 +338,6 @@ To see the response from your application, go to the `starter/resource` path of 
 
 After you develop and test your application, it's time to deliver it to your enterprise's Kabanero pipeline. Operations teams can configure the webhook on the Git repository that triggers the pipeline. To deliver it to the pipeline, push the project to the pre-configured Git repository. The pipeline then builds and deploys the application.
 
-== Nice work!
-
-You learned the basics of how to use the Eclipse MicroProfile Kabanero Collection with the Appsody CLI to create, develop, and deploy a simple cloud native microservice.
+// == Nice work!
+//
+// You learned the basics of how to use the Eclipse MicroProfile Kabanero Collection with the Appsody CLI to create, develop, and deploy a simple cloud native microservice.
