@@ -158,6 +158,7 @@ Your project is now initialized.
 For context, the following image displays the structure of the project that you're working on:
 
 image::/docs/assets/microprofile-project-layout.png[]
+{empty} +
 
 It contains a `StarterApplication.java` JAX-RS Application class, a `server.xml` Liberty server configuration, an `index.html` static HTML file, and a `pom.xml` project build file.
 
