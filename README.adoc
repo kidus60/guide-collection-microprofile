@@ -192,7 +192,7 @@ Navigate to the JAX-RS application endpoint to confirm that there are no JAX-RS 
 Error 500: javax.servlet.ServletException: At least one provider or resource class should be specified for application class "dev.appsody.starter.StarterApplication
 ----
 
-Go to the `src/main/java/dev/appsody/starter` directory that's within your project folder. Create a file named `StarterResource.java`. Open the file, populate it with the following code, and save it:
+In a new command-line window, go to the `src/main/java/dev/appsody/starter` directory that's within your project folder. Create a file named `StarterResource.java`. Open the file, populate it with the following code, and save it:
 ----
 package dev.appsody.starter;
 import javax.ws.rs.GET;
