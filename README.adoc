@@ -195,7 +195,7 @@ Run the following command to start the Appsody development environment:
 appsody run
 ----
 
-The Appsody CLI launches a local docker image that contains an Open Liberty server that hosts the microservice. After some time, you see a message similar to the following example:
+The Appsody CLI launches a local Docker image that contains an Open Liberty server that hosts the microservice. After some time, you see a message similar to the following example:
 [source, role='no_copy']
 ----
 [Container] [INFO] [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 20.235 seconds.
