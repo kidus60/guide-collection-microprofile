@@ -179,7 +179,7 @@ image::/img/guide/microprofile-project-layout.png[link="/img/guide/microprofile-
 It contains the following artifacts:
 
 * `StarterApplication.java`, a JAX-RS Application class
-* `server.xml`, a Liberty server configuration file
+* `server.xml`, an Open Liberty server configuration file
 * `index.html`, a static HTML file
 * `pom.xml`, a project build file
 
