@@ -289,7 +289,7 @@ The pod that is related to your deployed application is similar to the following
 simple-microprofile-77d6868765-xkcpk   1/1     Running   0         31s
 ----
 
-After the `simple-microprofile` pod starts, go to the URL that was returned after you ran the `appsody deploy` command, and you see the Appsody microservice splash screen. To see the response from your application, point your browser to `<URL_STRING>/starter/resource`, where <URL_STRING> is the URL that was returned. For example, the http://localhost:30262 URL was returned in the previous example. Go to the http://localhost:30262/starter/resource URL to see the deployed application response.
+After the `simple-microprofile` pod starts, go to the URL that was returned after you ran the `appsody deploy` command, and you see the Appsody microservice splash screen. To see the response from your application, point your browser to `<URL_STRING>/starter/resource`, where `<URL_STRING>` is the URL that was returned. For example, the http://localhost:30262 URL was returned in the previous example. Go to the http://localhost:30262/starter/resource URL to see the deployed application response.
 
 Use the following command to stop the deployed application:
 [role="command"]
@@ -339,7 +339,7 @@ After the application deploys, you see a message similar to the following exampl
 Deployed project running at "http://simple-microprofile.knative-serving.192.168.1.10.nip.io"
 ----
 
-To see the response from your application, point your browser to `<URL_STRING>/starter/resource`, where <URL_STRING> is the URL that was returned in the previous step.
+To see the response from your application, point your browser to `<URL_STRING>/starter/resource`, where `<URL_STRING>` is the URL that was returned in the previous step.
 
 // =================================================================================================
 // Delivering to pipelines
