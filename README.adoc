@@ -173,7 +173,7 @@ Your project is now initialized.
 
 For context, the following image displays the structure of the project that you're working on:
 
-image::/guide-collection-microprofile/assets/microprofile-project-layout.png[]
+image::/img/guide/microprofile-project-layout.png[link="/img/guide/microprofile-project-layout.png" alt="Project structure"]
 {empty} +
 
 It contains the following artifacts:
