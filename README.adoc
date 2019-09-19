@@ -12,17 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+---
+permalink:/guides/collection-eclipse-mp-appsody/
+---
 :page-layout: guide
 :projectid: collection-eclipse-mp-appsody
 :page-duration: 40 minutes
-:page-releasedate: 2019-09-13
+:page-releasedate: 2019-09-19
 :page-description: Explore how to use the Eclipse MicroProfile Collection and Appsody CLI to create, run, update, deploy, and deliver cloud native microservices.
 :guide-author: Kabanero
 :page-tags: ['Java', 'MicroProfile', 'Collection']
 :page-guide-category: collections
 :page-essential: true
 :page-essential-order: 1
-:page-permalink: /guides/collection-eclipse-mp-appsody/
 =  Developing cloud native microservices with the Eclipse MicroProfile Collection and Appsody CLI
 
 [.hidden]
