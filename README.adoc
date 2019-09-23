@@ -1,5 +1,6 @@
 ---
 permalink: /guides/collection-eclipse-mp-appsody/
+github-link: https://github.com/kabanero-io/guide-collection-microprofile
 ---
 :page-github-link: https://github.com/kabanero-io/guide-collection-microprofile
 :page-layout: guide
