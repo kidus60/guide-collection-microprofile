@@ -1,6 +1,7 @@
 ---
 permalink: /guides/collection-eclipse-mp-appsody/
 ---
+:page-github-link: https://github.com/kabanero-io/guide-collection-microprofile
 :page-layout: guide
 :projectid: collection-eclipse-mp-appsody
 :page-duration: 40 minutes
